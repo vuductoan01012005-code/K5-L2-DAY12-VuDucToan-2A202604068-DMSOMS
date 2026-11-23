@@ -1,5 +1,6 @@
 # TEAM — Ngày 12
 
+<<<<<<< HEAD
 Mã bộ ảnh: \*\*G12 · Hình thức: nhóm
 
 | Họ tên           | MSSV        | Đã gán đủ 22 ảnh?                                             | Review chéo với (peer diff) | Số dòng disagreement đã xử lý |
@@ -14,11 +15,24 @@ Mã bộ ảnh: \*\*G12 · Hình thức: nhóm
 Ca hai bạn vẫn không thống nhất và đã hỏi coach (ghi tên ảnh + đối tượng):
 
 - Không có ca mới ngoài các dòng diff trên; các bất đồng chính (D01 `person.seatbelt`; S02 `child_seat.occupied`; S06–S08 `child_seat` vs `infant_seat`) đã đối chiếu với GUIDE §4.7/§4.8 hoặc giữ `unknown`. Không có ca nào phải để coach giữ quyết sau buổi.
+=======
+Mã bộ ảnh: **Gxx** · Hình thức: nhóm / cá nhân (xóa một)
+
+| Họ tên | MSSV | Đã gán đủ 22 ảnh? | Review chéo với (peer diff) | Số dòng disagreement đã xử lý |
+|---|---|---|---|---|
+| | | có / không | | |
+| | | | | |
+
+Ca hai bạn vẫn không thống nhất và đã hỏi coach (ghi tên ảnh + đối tượng):
+
+- …
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082
 
 ## Cá nhân
 
 Mỗi người một mục, 1–2 dòng mỗi ý.
 
+<<<<<<< HEAD
 ### Vũ Đức Toàn-2A202604068
 
 - Phần mình làm (ngoài 22 ảnh của mình): chạy `cabin_check` ở Checkpoint A (`check_cpA.txt`: 2 lỗi `child_seat.occupied='yes'` + 4 cảnh báo `light`), Checkpoint B (`check_cpB.txt`: 0 lỗi, 2 cảnh báo `eye_*=unknown`), lần cuối 0 lỗi; tạo và đọc `disagreement_log.csv` khi diff với Sơn; viết `self_review.md` (bảng 4 cảnh S01_ir/S01_rgb/S07_rgb); tổng hợp ca hỏi coach.
@@ -32,3 +46,10 @@ Mỗi người một mục, 1–2 dòng mỗi ý.
 ---
 
 Làm cá nhân: chỉ cần điền dòng của mình, tên bạn được coach ghép, và mục "Cá nhân" của mình. File TEAM.md chính thức nằm ở thư mục gốc cùng `export_final.zip` (SUBMISSION.md); copy này chỉ để tham khảo cấu trúc.
+=======
+### <HoVaTen>-<MSSV>
+- Phần mình làm (ngoài 22 ảnh của mình, ví dụ ai review ai, ai tổng hợp ca hỏi coach): …
+- Điều mình học được hôm nay: …
+
+Làm cá nhân: chỉ cần điền dòng của mình, tên bạn được coach ghép, và mục "Cá nhân" của mình.
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082

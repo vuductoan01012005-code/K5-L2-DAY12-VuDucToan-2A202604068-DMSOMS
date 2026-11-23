@@ -1,12 +1,20 @@
+<<<<<<< HEAD
 # Danh sách lớp v0 — Vũ Đức Toàn · G12
 
 Viết tiếp từ slide 54 bài giảng. Mỗi lớp trả lời: **model cần nhận ra cái này để làm gì?**
 Nguồn giá trị: `labels_cabin_v1.json` (schema Cabin v1.0) + GUIDE §4. Khung G12: S01–S08, D01–D06.
+=======
+# Danh sách lớp v0 — <Họ tên> · <Gxx>
+
+Viết tiếp từ slide 54 bài giảng. Mỗi lớp trả lời: **model cần nhận ra cái này để làm gì?**
+Xóa 2 dòng ví dụ trước khi nộp.
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082
 
 ## DMS (ít nhất 6 lớp)
 
 | # | Lớp / thuộc tính | Giá trị | Để làm gì (chức năng DMS) | Nhìn thấy được trên IR? |
 |---|---|---|---|---|
+<<<<<<< HEAD
 | 1 | `eye_state` (`eye_left`, `eye_right`) | open / closed / unknown | Phát hiện buồn ngủ, mất tập trung: mắt nhắm lâu liên tục trên một đoạn khung hình, mỗi mắt gán riêng, không suy từ mắt còn lại. | Có, trừ khi đốm phản xạ LED hoặc kính râm che mắt → ghi `unknown`, không ghi `closed` (GUIDE §4.5) |
 | 2 | `gaze_zone` | road / mirror_l / mirror_r / mirror_c / cluster / center / lap / other | Phát hiện phân tâm: phân biệt nhìn đường với nhìn gương, nhìn xuống đùi, nhìn màn hình — theo hướng mắt và đầu, không theo suy đoán. | Có qua hướng mắt/đầu; mặt quay nghiêng hoặc phản xạ che mắt thì ghi `other` và ghi chú |
 | 3 | `glasses` | none / clear / sun / unknown | Biết người lái có đeo kính hay không để đánh giá độ tin cậy của `eye_state`: kính phản xạ NIR, kính râm trên NIR trông trong suốt nên không phân biệt được loại. Kính cầm trên tay vẫn tính `none`. | Thấy được "có đeo kính" qua gọng/tròng, nhưng **loại kính trên NIR thường là `unknown`** (D01–D06) |
@@ -15,11 +23,21 @@ Nguồn giá trị: `labels_cabin_v1.json` (schema Cabin v1.0) + GUIDE §4. Khun
 | 6 | `phone` (`state`) | held / mounted / lap | Phát hiện nghe/gọi điện thoại trong lúc lái. Chỉ vẽ khi thấy ít nhất một phần hình dạng điện thoại (cạnh, góc, màn hình); tay áp tai cầm vật tối mà không thấy phần nào thì không vẽ (GUIDE §4.7). | Có khi thấy khung máy/màn hình; vật tối áp tai trên NIR thì bỏ qua |
 | 7 | `seatbelt` (`person` ghế lái) | worn_correct / worn_incorrect / not_worn / unknown | Kiểm tra thắt dây đúng cách: dải chéo từ vai xuống hông phía đối diện là `worn_correct`, dải dưới nách/sau lưng/lệch vai là `worn_incorrect`. Không đoán từ ảnh kia của cùng cảnh. | Khó — dây chìm trong bóng tối hoặc bị che thì `unknown`. Ví dụ diff D01: mine `worn_correct` / peer `worn_incorrect` cần đối chiếu lại |
 | 8 | `person` + `face` (`seat` = driver) | driver / front_passenger / rear_left / rear_middle / rear_right | Định vị người lái, phân biệt với hành khách để biết "ai cần giám sát". Mặt không thấy (quay đi/che gần hết) thì không vẽ box `face` và ghi lý do. | Có bằng hình dạng (đầu, vai, thân); bị che một phần vẫn vẽ phần thấy được |
+=======
+| ví dụ | eye_state | open / closed / unknown | Phát hiện buồn ngủ (mắt nhắm lâu) | Có, trừ khi kính phản xạ |
+| 1 | | | | |
+| 2 | | | | |
+| 3 | | | | |
+| 4 | | | | |
+| 5 | | | | |
+| 6 | | | | |
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082
 
 ## OMS (ít nhất 6 lớp)
 
 | # | Lớp / thuộc tính | Giá trị | Để làm gì (chức năng OMS) | Nhìn thấy được trên IR? |
 |---|---|---|---|---|
+<<<<<<< HEAD
 | 1 | `person` (`seat` theo xe) | driver / front_passenger / rear_left / rear_middle / rear_right | Đếm số người theo từng ghế, biết ghế nào đang có người. Camera OMS nhìn về phía sau nên **ghế bên trái ảnh là `rear_right`** — gọi theo xe, không theo ảnh, nếu không mọi ghế lệch trái/phải. | Có bằng hình dạng; ảnh tối thì tăng brightness/contrast trên CVAT và không đoán |
 | 2 | `seatbelt` cho người ngồi sau (OMS) | not_worn / unknown trên SVIRO | Biết người ngồi sau có thắt dây không. **SVIRO không ai thắt dây**, nên trên G12 chỉ còn `not_worn` hoặc `unknown`, ghi `worn_correct` là sai — G12 không dạy được lớp `worn_correct` cho OMS. | Khó — dây chìm trên áo tối thì `unknown`; không suy từ RGB hay ảnh kia cùng cảnh |
 | 3 | `child_seat` (`occupied`) | no / unknown — **không có `yes`** | Phát hiện ghế trẻ em đang trống hay bị che không thấy rõ bên trong, để nhắc nhở và quản lý chỗ ngồi. Ghế trống mà gán `occupied = yes` sẽ làm model tưởng có trẻ em (lỗi ở Check A S01_rgb/S01_ir). | Có bằng hình dạng ghế; phần trong ghế bị che thì `unknown` |
@@ -29,11 +47,21 @@ Nguồn giá trị: `labels_cabin_v1.json` (schema Cabin v1.0) + GUIDE §4. Khun
 | 7 | Ghế trống (không vẽ box) + đếm số ghế trống vào ghi chú | — | Dạy model trạng thái "không có gì" ở ghế trống: không bịa người/vật khi ghế bị che hoặc tối. Ghế trống không vẽ box, chỉ đếm vào ghi chú (GUIDE §4.2, §4.8). | Có khi đủ sáng để khẳng định trống; không chắc thì không khẳng định có vật |
 | 8 | `face` (OMS: chỉ box) | box mặt, không cần thuộc tính mắt | Đánh dấu vị trí mặt của người ngồi sau để đối chiếu với thân người khi đếm người và tránh bỏ sót người bị che một phần; OMS không cần `eye_state`/`gaze_zone` như DMS. | Có bằng hình dạng đầu/mặt; mặt quay đi hoặc che gần hết thì không vẽ và ghi lý do |
 
+=======
+| ví dụ | infant_seat | có / không, theo ghế | Nhắc quên trẻ trong xe; tắt túi khí ghế trước | Có (hình dạng) |
+| 1 | | | | |
+| 2 | | | | |
+| 3 | | | | |
+| 4 | | | | |
+| 5 | | | | |
+| 6 | | | | |
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082
 
 ## 2 câu hỏi leo thang
 
 Câu hỏi bạn muốn hỏi người viết guideline (hoặc khách hàng) vì guideline v1.0 chưa trả lời. Mỗi câu kèm **tên khung** làm ví dụ.
 
+<<<<<<< HEAD
 1. Câu hỏi: Ranh giới giữa `child_seat` và `infant_seat` nên đặt ở đâu khi hai loại ghế nhìn gần giống nhau trên IR và guideline §4.8 chỉ mô tả bằng tên loại ghế, chưa cho tiêu chí kích thước/hình dạng cụ thể để phân biệt?
    Khung ví dụ: `S03_ir.png` / `S03_rgb.png` và `S06_ir.png`–`S08_rgb.png` (G12) — `disagreement_log.csv` cho thấy hai bản gán luân phiên ghi `child_seat`/`infant_seat` với IoU ≈ 0.00 tại cùng một ghế, tức hai bạn đang gọi cùng một vật bằng hai tên khác nhau.
    Bạn tạm gán thế nào và vì sao: ưu tiên hình dạng tổng thể (ghế em bé là nôi xách nhỏ gọn, ghế trẻ em là ghế ngồi lớn hơn) và đối chiếu cặp RGB−IR cùng cảnh; nếu không phân biệt được chắc chắn thì ghi rõ trong ghi chú thay vì đoán một trong hai. Lý do: OMS cần học đúng loại ghế để quyết định an toàn cho trẻ, và guideline §4.4 yêu cầu không đoán khi không thấy rõ.
@@ -42,3 +70,11 @@ Câu hỏi bạn muốn hỏi người viết guideline (hoặc khách hàng) v�
    Khung ví dụ: `D01.png` (G12) — `disagreement_log.csv` ghi `person.seatbelt` với IoU = 0.73 nhưng hai bản ghi khác nhau: `worn_correct` (mine) / `worn_incorrect` (peer). Cả hai đều thấy dây ở cùng vị trí nhưng hiểu đường đi của dây khác nhau.
    Bạn tạm gán thế nào và vì sao: chỉ ghi `worn_correct` khi thấy rõ dải chéo từ vai xuống hông phía đối diện, chỉ ghi `worn_incorrect` khi thấy rõ dải dưới nách/sau lưng/lệch vai; nếu dây bị che, chìm trong bóng tối hoặc chỉ thấy một đoạn không đủ để xác định đường đi thì ghi `unknown` và không suy từ ảnh kia của cùng cảnh. Lý do: guideline §4.4.1 và §4.7 cấm đoán dây an toàn khi không thấy, và ghi sai `worn_*` sẽ dạy model tự tin một cách sai lầm.
 
+=======
+1. Câu hỏi: …
+   Khung ví dụ: …
+   Bạn tạm gán thế nào và vì sao: …
+2. Câu hỏi: …
+   Khung ví dụ: …
+   Bạn tạm gán thế nào và vì sao: …
+>>>>>>> b759ad54bba8d6dc7b7fa63a61573362c015c082
