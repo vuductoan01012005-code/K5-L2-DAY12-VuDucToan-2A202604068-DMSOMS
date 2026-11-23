@@ -1,0 +1,9 @@
+File: part_A.zip · chỉ kiểm ảnh: S01, S02
+Ảnh: 4 · đã có frame_meta: 4 · số đối tượng: child_seat=4, face=2, infant_seat=2, object=2, person=2
+  [ERROR] S01_ir.png: child_seat: occupied='yes' không hợp lệ (cho phép: unknown, no)
+  [WARN] S01_ir.png: ảnh SVIRO là ảnh dựng: light nên là 'unknown'
+  [ERROR] S01_rgb.png: child_seat: occupied='yes' không hợp lệ (cho phép: unknown, no)
+  [WARN] S01_rgb.png: ảnh SVIRO là ảnh dựng: light nên là 'unknown'
+  [WARN] S02_ir.png: ảnh SVIRO là ảnh dựng: light nên là 'unknown'
+  [WARN] S02_rgb.png: ảnh SVIRO là ảnh dựng: light nên là 'unknown'
+Kết quả: 2 lỗi, 4 cảnh báo. Cảnh báo cần bạn tự xét, không tự động là sai.

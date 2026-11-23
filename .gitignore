@@ -1,0 +1,13 @@
+# Ảnh cabin chỉ ở trên máy bạn (RULES §2): không bao giờ commit ảnh hay thư mục Gxx/
+G[0-9][0-9]/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+part_*.zip
+peer_*.zip
+ir_pairs/
+__pycache__/
+*.pyc
+.DS_Store
+.env*
